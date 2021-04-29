@@ -31,6 +31,9 @@ class OrderItem(TimeStampedModel):
     def __str__(self):
         return f'Item: {self.item.name} Quantity {self.quantity}'
 
+    def price(self):
+        return self.item.price * self.quantity
+
 
 class Order(TimeStampedModel):
     order_num = models.IntegerField()
@@ -39,3 +42,9 @@ class Order(TimeStampedModel):
 
     def __str__(self):
         return f"{self.client_name}"
+
+    def total_item(self):
+        return sum([item.quantity for item in self.items.all()])
+
+    def total_price(self):
+        return sum([item.price() for item in self.items.all()])
