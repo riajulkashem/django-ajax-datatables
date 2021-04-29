@@ -35,6 +35,7 @@ class OrderItem(TimeStampedModel):
 class Order(TimeStampedModel):
     order_num = models.IntegerField()
     items = models.ManyToManyField(OrderItem)
+    client_name = models.CharField(max_length=200, null=True)
 
     def __str__(self):
-        return f"{self.order_num}"
+        return f"{self.client_name}"
