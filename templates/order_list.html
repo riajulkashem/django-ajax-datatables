@@ -13,18 +13,6 @@
             </tr>
             </thead>
             <tbody>
-            {% for object in object_list %}
-                <tr>
-                    <td>{{ object.order_num }}</td>
-                    <td>{{ object.client_name }}</td>
-                    <td>{{ object.total_item }}</td>
-                    <td>{{ object.total_price }}</td>
-                    <td>
-                        <a href="#" class="btn btn-sm btn-outline-success">Detail</a>
-                    </td>
-                </tr>
-            {% endfor %}
-
             </tbody>
         </table>
     </div>
@@ -33,7 +21,50 @@
 {% block extra_js %}
     <script>
         $(document).ready(function () {
-            $('#order_table').DataTable()
+            $('#order_table').DataTable({
+                "processing": true,
+                "serverSide": true,
+                "lengthMenu": [[2, 5, 20, -1], [2, 5, 20, "All"]],
+                ajax: function (data, callback, settings) {
+                    // make a regular ajax request using data.start and data.length
+                    console.log(data)
+                    $.get('/order-list/', {
+                        limit: data.length,
+                        offset: data.start,
+                        search: data.search.value,
+                        order: data.order[0]["column_name"]
+                    }, function (res) {
+                        // map your server's response to the DataTables format and pass it to
+                        // DataTables' callback
+                        callback({
+                            recordsTotal: res.count,
+                            recordsFiltered: res.count,
+                            data: res.results
+                        });
+                    });
+                },
+                "columns": [
+                    {"data": "order_num", "orderable": false},
+                    {"data": "client_name", name: "client_name"},
+                    {"data": "total_item", name: "total_item"},
+                    {"data": "total_price", name: "total_price"},
+                    {
+                        "data": null,
+                        "defaultContent": '<a href="#" class="btn btn-sm btn-outline-success">Detail</a>'
+                    }
+                ],
+                "order": [
+                    [1, "desc"],
+                    [2, "desc"],
+                    [3, "desc"],
+                ],
+
+                fnServerParams: function (data) {
+                    data['order'].forEach(function (items, index) {
+                        data['order'][index]['column_name'] = data['columns'][items.column]['data'];
+                    });
+                },
+            })
         })
     </script>
 {% endblock %}
