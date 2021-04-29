@@ -1,14 +1,13 @@
-from django.db.models import Q
 from django.shortcuts import render
-from django.views.generic import ListView
+from django.views import View
+from django.views.generic import DetailView
 from rest_framework.generics import ListAPIView
-from rest_framework.pagination import PageNumberPagination
 
 from cart.models import Order
 from cart.serializers import OrderSerializer
 
 
-class Home(ListView):
+class Home(View):
     template_name = 'order_list.html'
 
     def get(self, request, *args, **kwargs):
@@ -49,3 +48,8 @@ class OrderListAPIView(ListAPIView):
         queryset = super(OrderListAPIView, self).get_queryset()
         searched_queryset = self.datatable_search(queryset)
         return self.datatable_filter(searched_queryset)
+
+
+class OrderDetailView(DetailView):
+    model = Order
+    template_name = 'order_detail.html'

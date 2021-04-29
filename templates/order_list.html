@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="card mt-5 shadow-lg w-50 mx-auto table-responsive p-5">
+    <div class="card mt-5 shadow-lg w-75 mx-auto p-5">
         <table class="table table-hover text-center" id="order_table">
             <thead class="thead-dark">
             <tr>
@@ -48,8 +48,10 @@
                     {"data": "total_item", name: "total_item"},
                     {"data": "total_price", name: "total_price"},
                     {
-                        "data": null,
-                        "defaultContent": '<a href="#" class="btn btn-sm btn-outline-success">Detail</a>'
+                        sortable: false,
+                        "render": function (data, type, full, meta) {
+                            return '<a href="/order/'+full.id+'/details/" class="btn btn-sm btn-outline-success">Detail</a>';
+                        }
                     }
                 ],
                 "order": [
