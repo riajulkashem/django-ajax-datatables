@@ -6,7 +6,7 @@ from django.views import View
 from django.views.generic import DetailView, UpdateView
 from rest_framework.generics import ListAPIView
 
-from cart.forms import OrderItemFormSet
+from cart.forms import OrderItemFormSet, OrderForm
 from cart.models import Order, OrderItem
 from cart.serializers import OrderSerializer
 
@@ -62,7 +62,8 @@ class OrderDetailView(DetailView):
 class OrderUpdate(UpdateView):
     model = Order
     template_name = 'order_detail.html'
-    success_url = reverse('cart:home')
+    form_class = OrderForm
+    success_url = reverse_lazy('cart:home')
 
     def get_context_data(self, **kwargs):
         data = super(OrderUpdate, self).get_context_data(**kwargs)

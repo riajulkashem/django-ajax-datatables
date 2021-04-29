@@ -1,33 +1,14 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 
 {% block content %}
     <div class="card mt-5 shadow-lg w-50 mx-auto p-5">
         <div class="card-header mb-5">
             <h1 class="text-center">{{ object.client_name }}'s Order Detail's ID <b>#{{ object.order_num }}</b></h1>
         </div>
-        <table class="table table-hover text-center" id="order_table">
-            <thead class="thead-dark">
-            <tr>
-                <th>Item</th>
-                <th>Quantity</th>
-                <th>Action</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for order_item in object.items.all %}
-                <tr data-row-id="{{ order_item.id }}">
-                    <td>{{ order_item.item.name }}</td>
-                    <td>
-                        <input type="number" min="1" class="form-control quantity" value="{{ order_item.quantity }}">
-                    </td>
-                    <td>
-                        <button class="btn btn-sm btn-outline-danger">Delete</button>
-                    </td>
-                </tr>
-            {% endfor %}
-
-            </tbody>
-        </table>
+        <div class="card-body">
+            {% crispy form %}
+        </div>
     </div>
 {% endblock %}
 

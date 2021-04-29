@@ -1,10 +1,19 @@
+{% load static %}
 {% load crispy_forms_filters crispy_forms_tags %}
 <table>
-{{ formset.management_form|crispy }}
+<thead>
+<tr>
+    <th>Client Name</th>
+    <th>Order Number</th>
+    <th>Action</th>
+</tr>
+</thead>
+    <tbody>
+    {{ formset.management_form|crispy }}
 
     {% for form in formset.forms %}
-            <tr class="{% cycle 'row1' 'row2' %} formset_row-{{ formset.prefix }}">
-                {% for field in form.visible_fields %}
+        <tr class="{% cycle 'row1' 'row2' %} formset_row-{{ formset.prefix }}">
+            {% for field in form.visible_fields %}
                 <td>
                     {# Include the hidden fields in the form #}
                     {% if forloop.first %}
@@ -15,20 +24,22 @@
                     {{ field.errors.as_ul }}
                     {{ field|as_crispy_field }}
                 </td>
-                {% endfor %}
-            </tr>
+            {% endfor %}
+        </tr>
     {% endfor %}
-
+    </tbody>
 </table>
 <br>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
 </script>
-<script src="https://raw.githubusercontent.com/elo80ka/django-dynamic-formset/master/src/jquery.formset.js">
+<script src="{% static 'jquery.formset.js' %}">
 </script>
 <script type="text/javascript">
     $('.formset_row-{{ formset.prefix }}').formset({
-        addText: 'add another',
-        deleteText: 'remove',
+        addText: "Add New <i class='fa fa-plus'></i>",
+        addCssClass: "btn btn-outline-primary",
+         deleteCssClass: "btn btn-outline-danger",
+        deleteText: "<i class='fa fa-trash'></i>",
         prefix: '{{ formset.prefix }}',
     });
 </script>
