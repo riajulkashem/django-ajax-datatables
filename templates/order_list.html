@@ -27,7 +27,6 @@
                 "lengthMenu": [[2, 5, 20, -1], [2, 5, 20, "All"]],
                 ajax: function (data, callback, settings) {
                     // make a regular ajax request using data.start and data.length
-                    console.log(data)
                     $.get('/order-list/', {
                         limit: data.length,
                         offset: data.start,
