@@ -1,0 +1,68 @@
+[
+{
+    "model": "cart.item",
+    "pk": 1,
+    "fields": {
+        "created": "2021-04-29T14:28:23.316Z",
+        "updated": "2021-04-29T14:28:23.316Z",
+        "name": "Potol",
+        "unit": "KG",
+        "price": 40.0
+    }
+},
+{
+    "model": "cart.item",
+    "pk": 2,
+    "fields": {
+        "created": "2021-04-29T14:28:33.926Z",
+        "updated": "2021-04-29T14:28:33.926Z",
+        "name": "Potato",
+        "unit": "KG",
+        "price": 20.0
+    }
+},
+{
+    "model": "cart.item",
+    "pk": 3,
+    "fields": {
+        "created": "2021-04-29T14:40:16.512Z",
+        "updated": "2021-04-29T14:40:16.512Z",
+        "name": "Rice",
+        "unit": "KG",
+        "price": 50.0
+    }
+},
+{
+    "model": "cart.item",
+    "pk": 4,
+    "fields": {
+        "created": "2021-04-29T14:41:33.941Z",
+        "updated": "2021-04-29T14:41:33.941Z",
+        "name": "Soap",
+        "unit": "PS",
+        "price": 40.0
+    }
+},
+{
+    "model": "cart.item",
+    "pk": 5,
+    "fields": {
+        "created": "2021-04-29T14:41:55.835Z",
+        "updated": "2021-04-29T14:41:55.835Z",
+        "name": "PEN",
+        "unit": "Dozzan",
+        "price": 60.0
+    }
+},
+{
+    "model": "cart.item",
+    "pk": 6,
+    "fields": {
+        "created": "2021-04-29T14:42:17.788Z",
+        "updated": "2021-04-29T14:42:17.788Z",
+        "name": "Roler",
+        "unit": "Dozzan",
+        "price": 300.0
+    }
+}
+]
