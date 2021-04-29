@@ -24,20 +24,8 @@ class Item(TimeStampedModel):
         return self.name
 
 
-class OrderItem(TimeStampedModel):
-    item = models.ForeignKey(Item, on_delete=models.CASCADE)
-    quantity = models.IntegerField(default=1)
-
-    def __str__(self):
-        return f'Item: {self.item.name} Quantity {self.quantity}'
-
-    def items_price(self):
-        return self.item.price * self.quantity
-
-
 class Order(TimeStampedModel):
     order_num = models.IntegerField()
-    items = models.ManyToManyField(OrderItem)
     client_name = models.CharField(max_length=200, null=True)
 
     def __str__(self):
@@ -50,3 +38,20 @@ class Order(TimeStampedModel):
     @property
     def total_price(self):
         return sum([item.items_price() for item in self.items.all()])
+
+
+class OrderItem(TimeStampedModel):
+    item = models.ForeignKey(Item, on_delete=models.CASCADE)
+    order = models.ForeignKey(
+        Order,
+        on_delete=models.CASCADE,
+        related_name='items',
+        null=True
+    )
+    quantity = models.IntegerField(default=1)
+
+    def __str__(self):
+        return f'Item: {self.item.name} Quantity {self.quantity}'
+
+    def items_price(self):
+        return self.item.price * self.quantity

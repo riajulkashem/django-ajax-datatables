@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="card mt-5 shadow-lg w-75 mx-auto p-5">
+    <div class="card mt-5 shadow-lg w-50 mx-auto p-5">
         <div class="card-header mb-5">
             <h1 class="text-center">{{ object.client_name }}'s Order Detail's ID <b>#{{ object.order_num }}</b></h1>
         </div>
@@ -18,7 +18,7 @@
                 <tr data-row-id="{{ order_item.id }}">
                     <td>{{ order_item.item.name }}</td>
                     <td>
-                        <input type="number" class="form-control" value="{{ order_item.quantity }}">
+                        <input type="number" min="1" class="form-control quantity" value="{{ order_item.quantity }}">
                     </td>
                     <td>
                         <button class="btn btn-sm btn-outline-danger">Delete</button>
@@ -29,4 +29,15 @@
             </tbody>
         </table>
     </div>
+{% endblock %}
+
+{% block extra_js %}
+    <script>
+        $(document).ready(function () {
+            $('.quantity').keyup(function () {
+                if (this.value === 0) this.value(1)
+                console.log(this.value)
+            })
+        })
+    </script>
 {% endblock %}

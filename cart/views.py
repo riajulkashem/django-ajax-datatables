@@ -1,9 +1,10 @@
+from django.http import JsonResponse
 from django.shortcuts import render
 from django.views import View
 from django.views.generic import DetailView
 from rest_framework.generics import ListAPIView
 
-from cart.models import Order
+from cart.models import Order, OrderItem
 from cart.serializers import OrderSerializer
 
 

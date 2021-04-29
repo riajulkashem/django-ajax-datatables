@@ -4,12 +4,9 @@
     "pk": 1,
     "fields": {
         "created": "2021-04-29T14:29:27.714Z",
-        "updated": "2021-04-29T14:29:27.715Z",
+        "updated": "2021-04-29T20:40:20.572Z",
         "order_num": 1,
-        "items": [
-            1,
-            2
-        ]
+        "client_name": "Riajul"
     }
 },
 {
@@ -17,13 +14,9 @@
     "pk": 2,
     "fields": {
         "created": "2021-04-29T14:43:32.766Z",
-        "updated": "2021-04-29T14:43:32.766Z",
+        "updated": "2021-04-29T20:40:27.484Z",
         "order_num": 2,
-        "items": [
-            1,
-            2,
-            3
-        ]
+        "client_name": "Kashem"
     }
 },
 {
@@ -31,13 +24,9 @@
     "pk": 3,
     "fields": {
         "created": "2021-04-29T14:43:40.200Z",
-        "updated": "2021-04-29T14:43:40.200Z",
+        "updated": "2021-04-29T20:40:45.623Z",
         "order_num": 3,
-        "items": [
-            3,
-            4,
-            5
-        ]
+        "client_name": "Jabbar"
     }
 },
 {
@@ -45,13 +34,9 @@
     "pk": 4,
     "fields": {
         "created": "2021-04-29T14:43:46.975Z",
-        "updated": "2021-04-29T14:43:46.976Z",
+        "updated": "2021-04-29T20:40:39.852Z",
         "order_num": 4,
-        "items": [
-            2,
-            3,
-            4
-        ]
+        "client_name": "Rafique"
     }
 },
 {
@@ -59,12 +44,9 @@
     "pk": 5,
     "fields": {
         "created": "2021-04-29T14:44:02.268Z",
-        "updated": "2021-04-29T14:44:02.268Z",
+        "updated": "2021-04-29T20:40:34.504Z",
         "order_num": 5,
-        "items": [
-            1,
-            4
-        ]
+        "client_name": "Sahidul"
     }
 }
 ]

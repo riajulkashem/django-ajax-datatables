@@ -1,6 +1,6 @@
 # sapience-trio
 
-- [ ] A page to display list of orders with total number and price of all
+- [x] A page to display list of orders with total number and price of all
 items in that Order ( using jQuery datatables server side processing
 with search and sort enable).
   
