@@ -1,6 +1,6 @@
 {% load static %}
 {% load crispy_forms_filters crispy_forms_tags %}
-<table>
+<table class="table">
 <thead>
 <tr>
     <th>Client Name</th>
@@ -38,7 +38,7 @@
     $('.formset_row-{{ formset.prefix }}').formset({
         addText: "Add New <i class='fa fa-plus'></i>",
         addCssClass: "btn btn-outline-primary",
-         deleteCssClass: "btn btn-outline-danger",
+         deleteCssClass: "btn btn-outline-danger delete",
         deleteText: "<i class='fa fa-trash'></i>",
         prefix: '{{ formset.prefix }}',
     });

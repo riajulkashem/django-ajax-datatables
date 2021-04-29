@@ -27,7 +27,14 @@ class OrderForm(forms.ModelForm):
                     Formset('items')
                 ),
                 HTML("<br>"),
-                ButtonHolder(Submit('submit', 'save')),
+                ButtonHolder(
+                    Submit(
+                        css_class="btn btn-success",
+                        value='Update Order Detail',
+                        name='submit'
+                    ),
+                    css_class='float-right',
+                ),
             )
         )
 
