@@ -36,8 +36,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'cart.apps.CartConfig',
-    'rest_framework'  # https://www.django-rest-framework.org/
+    'rest_framework',  # https://www.django-rest-framework.org/
+    'crispy_forms',  # https://django-crispy-forms.readthedocs.io/
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

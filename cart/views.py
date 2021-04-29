@@ -1,9 +1,12 @@
+from django.db import transaction
 from django.http import JsonResponse
 from django.shortcuts import render
+from django.urls import reverse, reverse_lazy
 from django.views import View
-from django.views.generic import DetailView
+from django.views.generic import DetailView, UpdateView
 from rest_framework.generics import ListAPIView
 
+from cart.forms import OrderItemFormSet
 from cart.models import Order, OrderItem
 from cart.serializers import OrderSerializer
 
@@ -54,3 +57,28 @@ class OrderListAPIView(ListAPIView):
 class OrderDetailView(DetailView):
     model = Order
     template_name = 'order_detail.html'
+
+
+class OrderUpdate(UpdateView):
+    model = Order
+    template_name = 'order_detail.html'
+    success_url = reverse('cart:home')
+
+    def get_context_data(self, **kwargs):
+        data = super(OrderUpdate, self).get_context_data(**kwargs)
+        if self.request.POST:
+            data['items'] = OrderItemFormSet(self.request.POST, instance=self.object)
+        else:
+            data['items'] = OrderItemFormSet(instance=self.object)
+        return data
+
+    def form_valid(self, form):
+        context = self.get_context_data()
+        order_items = context['items']
+        with transaction.atomic():
+            form.instance.created_by = self.request.user
+            self.object = self.get_object()
+            if order_items.is_valid():
+                order_items.instance = self.object
+                order_items.save()
+        return super(OrderUpdate, self).form_valid(form)
