@@ -14,3 +14,12 @@ class TimeStampedModel(models.Model):
     class Meta:
         abstract = True
         ordering = ['updated']
+
+
+class Item(TimeStampedModel):
+    name = models.CharField(max_length=200)
+    unit = models.CharField(max_length=200)
+    price = models.FloatField()
+
+    def __str__(self):
+        return self.name
