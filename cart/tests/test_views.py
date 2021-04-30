@@ -1,6 +1,6 @@
 from django.test import TestCase
 from django.urls import reverse
-from rest_framework.test import APITestCase
+from rest_framework.test import APITestCase, APIClient
 
 
 class TestHomeView(TestCase):
@@ -17,8 +17,8 @@ class TestHomeView(TestCase):
 
 class TestOrderListApiView(APITestCase):
     fixtures = ['item.json', 'order.json', 'order_item.json']
+    client = APIClient()
 
     def test_url_exist_at_desired_location(self):
-        response = self.client.get('/')
-        print(response.data)
+        response = self.client.get('/order-list/')
         self.assertEqual(response.status_code, 200)
