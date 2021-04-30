@@ -34,3 +34,8 @@ class TestOrderListApiView(APITestCase):
         # Convert Order Dict Object Into JSON Dict
         data = json.loads(json.dumps(response.data))
         self.assertEqual(len(data['results']), 5)
+
+    def test_limit_paginated(self):
+        response = self.client.get(reverse('cart:order_list'), data={'limit': 2})
+        data = json.loads(json.dumps(response.data))
+        self.assertEqual(len(data['results']), 2)
