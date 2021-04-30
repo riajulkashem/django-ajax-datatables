@@ -1,13 +1,12 @@
 from django.db import transaction
-from django.http import JsonResponse
 from django.shortcuts import render
-from django.urls import reverse, reverse_lazy
+from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic import DetailView, UpdateView
 from rest_framework.generics import ListAPIView
 
 from cart.forms import OrderItemFormSet, OrderForm
-from cart.models import Order, OrderItem
+from cart.models import Order
 from cart.serializers import OrderSerializer
 
 
