@@ -1,5 +1,5 @@
-from .test_models import ItemModelTest
+from .test_models import OrderItemModelTest
 
 __all__ = [
-    ItemModelTest
+    OrderItemModelTest
 ]
