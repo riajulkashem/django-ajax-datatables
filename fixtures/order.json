@@ -4,7 +4,7 @@
     "pk": 1,
     "fields": {
         "created": "2021-04-29T14:29:27.714Z",
-        "updated": "2021-04-29T20:40:20.572Z",
+        "updated": "2021-04-30T07:46:21.114Z",
         "order_num": 1,
         "client_name": "Riajul"
     }
@@ -14,7 +14,7 @@
     "pk": 2,
     "fields": {
         "created": "2021-04-29T14:43:32.766Z",
-        "updated": "2021-04-29T20:40:27.484Z",
+        "updated": "2021-04-30T07:56:41.045Z",
         "order_num": 2,
         "client_name": "Kashem"
     }
@@ -24,9 +24,9 @@
     "pk": 3,
     "fields": {
         "created": "2021-04-29T14:43:40.200Z",
-        "updated": "2021-04-29T20:40:45.623Z",
+        "updated": "2021-04-30T07:58:28.090Z",
         "order_num": 3,
-        "client_name": "Jabbar"
+        "client_name": "Abdul Jabbar"
     }
 },
 {
@@ -34,7 +34,7 @@
     "pk": 4,
     "fields": {
         "created": "2021-04-29T14:43:46.975Z",
-        "updated": "2021-04-29T20:40:39.852Z",
+        "updated": "2021-04-30T07:57:01.040Z",
         "order_num": 4,
         "client_name": "Rafique"
     }
@@ -44,7 +44,7 @@
     "pk": 5,
     "fields": {
         "created": "2021-04-29T14:44:02.268Z",
-        "updated": "2021-04-29T20:40:34.504Z",
+        "updated": "2021-04-30T07:55:42.417Z",
         "order_num": 5,
         "client_name": "Sahidul"
     }
