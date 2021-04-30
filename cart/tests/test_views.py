@@ -39,3 +39,8 @@ class TestOrderListApiView(APITestCase):
         response = self.client.get(reverse('cart:order_list'), data={'limit': 2})
         data = json.loads(json.dumps(response.data))
         self.assertEqual(len(data['results']), 2)
+
+    def test_search(self):
+        response = self.client.get(reverse('cart:order_list'), data={'search': 'Riajul'})
+        data = json.loads(json.dumps(response.data))
+        self.assertEqual(data['results'][0]['client_name'], 'Riajul')
