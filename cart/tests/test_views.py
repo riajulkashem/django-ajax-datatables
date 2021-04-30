@@ -36,19 +36,32 @@ class TestOrderListApiView(APITestCase):
         self.assertEqual(len(data['results']), 5)
 
     def test_limit_paginated(self):
-        response = self.client.get(reverse('cart:order_list'), data={'limit': 2})
+        response = self.client.get(
+            reverse('cart:order_list'),
+            data={'limit': 2}
+        )
         data = json.loads(json.dumps(response.data))
         self.assertEqual(len(data['results']), 2)
 
     def test_search(self):
-        response = self.client.get(reverse('cart:order_list'), data={'search': 'Riajul'})
-        data = json.loads(json.dumps(response.data))
+        response = self.client.get(
+            reverse('cart:order_list'),
+            data={'search': 'Riajul'}
+        )
+        data = json.loads(
+            json.dumps(response.data)
+        )
         self.assertEqual(data['results'][0]['client_name'], 'Riajul')
 
     def test_list_order(self):
-        response = self.client.get(reverse('cart:order_list'), data={'order': 'total_price'})
+        response = self.client.get(
+            reverse('cart:order_list'),
+            data={'order': 'total_price'}
+        )
         data = json.loads(json.dumps(response.data))
         self.assertEqual(data['results'][0]['total_price'], 45340)
+        first_row_price = data['results'][0]['total_price']
+        second_row_price = data['results'][1]['total_price']
         self.assertTrue(
-            data['results'][0]['total_price'] < data['results'][1]['total_price']
+            first_row_price < second_row_price
         )

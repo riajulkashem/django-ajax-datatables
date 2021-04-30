@@ -30,7 +30,13 @@ class OrderListAPIView(ListAPIView):
         if search_value:
             if search_value.isdigit():
                 # Model Object Cant Filter or Order By Model Property
-                return [q for q in queryset if int(search_value) in [q.order_num, q.total_item, q.total_price]]
+                result = []
+                for q in queryset:
+                    if int(search_value) in [
+                        q.order_num, q.total_item, q.total_price
+                    ]:
+                        result.append(q)
+                return result
             return queryset.filter(client_name__icontains=search_value)
         return queryset
 
@@ -65,7 +71,10 @@ class OrderUpdate(UpdateView):
     def get_context_data(self, **kwargs):
         data = super(OrderUpdate, self).get_context_data(**kwargs)
         if self.request.POST:
-            data['items'] = OrderItemFormSet(self.request.POST, instance=self.object)
+            data['items'] = OrderItemFormSet(
+                self.request.POST,
+                instance=self.object
+            )
         else:
             data['items'] = OrderItemFormSet(instance=self.object)
         return data

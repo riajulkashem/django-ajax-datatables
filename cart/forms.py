@@ -1,5 +1,8 @@
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Layout, Div, Field, Fieldset, ButtonHolder, Submit, HTML
+from crispy_forms.layout import (
+    Layout, Div, Field, Fieldset,
+    ButtonHolder, Submit, HTML
+)
 from django import forms
 from django.forms import inlineformset_factory
 
