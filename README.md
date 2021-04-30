@@ -19,7 +19,7 @@ git clone https://github.com/RiajulKashem/sapience-trio.git
 Copy .env.example to .env
 
 ```bash
-cp .env.example app_root/.env
+cp .env.example sapience_trio/.env
 ```
 
 Build docker images
@@ -31,5 +31,17 @@ docker-compose build
 Start services
 
 ```bash
-docker-compose up -d
+sudo docker-compose up -d --build 
+```
+View Docker log
+
+```bash
+docker-compose logs -f
+```
+Load Fixtures
+
+```bash
+docker-compose run web python manage.py loaddata cart/fixtures/item.json
+docker-compose run web python manage.py loaddata cart/fixtures/order.json
+docker-compose run web python manage.py loaddata cart/fixtures/order_item.json
 ```
