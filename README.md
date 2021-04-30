@@ -31,7 +31,7 @@ docker-compose build
 Start services
 
 ```bash
-sudo docker-compose up -d --build 
+docker-compose up -d --build 
 ```
 View Docker log
 
