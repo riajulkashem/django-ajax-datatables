@@ -21,8 +21,6 @@ class OrderListAPIView(ListAPIView):
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
 
-    # ordering_fields = ('order_num', 'client_name', 'total_item', 'total_price')
-
     def datatable_search(self, queryset):
         """
         :param queryset:
