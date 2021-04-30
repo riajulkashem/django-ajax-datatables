@@ -2,19 +2,24 @@
 
 {% block content %}
     <div class="card mt-5 shadow-lg w-75 mx-auto p-5">
-        <table class="table table-hover text-center" id="order_table">
-            <thead class="thead-dark">
-            <tr>
-                <th>Order Number</th>
-                <th>Client Name</th>
-                <th>Total Item</th>
-                <th>Total Price</th>
-                <th>Action</th>
-            </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
+        <div class="card-header">
+            <h1 class="text-center">Django Datatables Serverside</h1>
+        </div>
+        <div class="card-body">
+            <table class="table table-hover text-center" id="order_table">
+                <thead class="thead-dark">
+                <tr>
+                    <th>Order Number</th>
+                    <th>Client Name</th>
+                    <th>Total Item</th>
+                    <th>Total Price</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
     </div>
 {% endblock %}
 
@@ -50,7 +55,7 @@
                     {
                         sortable: false,
                         "render": function (data, type, full, meta) {
-                            return '<a href="/order/'+full.id+'/details/" class="btn btn-sm btn-outline-success">Detail</a>';
+                            return '<a href="/order/' + full.id + '/details/" class="btn btn-sm btn-outline-success">Detail</a>';
                         }
                     }
                 ],
