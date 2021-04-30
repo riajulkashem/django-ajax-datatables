@@ -20,4 +20,5 @@ class TestOrderListApiView(APITestCase):
 
     def test_url_exist_at_desired_location(self):
         response = self.client.get('/')
+        print(response.data)
         self.assertEqual(response.status_code, 200)
