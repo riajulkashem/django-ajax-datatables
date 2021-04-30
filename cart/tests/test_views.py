@@ -28,3 +28,9 @@ class TestOrderListApiView(APITestCase):
     def test_view_url_accessible_by_name(self):
         response = self.client.get(reverse('cart:order_list'))
         self.assertEqual(response.status_code, 200)
+
+    def test_all_list_of_orders(self):
+        response = self.client.get(reverse('cart:order_list'))
+        # Convert Order Dict Object Into JSON Dict
+        data = json.loads(json.dumps(response.data))
+        self.assertEqual(len(data['results']), 5)
