@@ -44,3 +44,11 @@ class TestOrderListApiView(APITestCase):
         response = self.client.get(reverse('cart:order_list'), data={'search': 'Riajul'})
         data = json.loads(json.dumps(response.data))
         self.assertEqual(data['results'][0]['client_name'], 'Riajul')
+
+    def test_list_order(self):
+        response = self.client.get(reverse('cart:order_list'), data={'order': 'total_price'})
+        data = json.loads(json.dumps(response.data))
+        self.assertEqual(data['results'][0]['total_price'], 45340)
+        self.assertTrue(
+            data['results'][0]['total_price'] < data['results'][1]['total_price']
+        )
