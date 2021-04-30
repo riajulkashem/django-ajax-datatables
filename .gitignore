@@ -118,8 +118,8 @@ celerybeat.pid
 *.sage.py
 
 # Environments
- .env
-.env/
+ sapience_trio/.env
+sapience_trio/.env/
 .venv/
 env/
 venv/
