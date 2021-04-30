@@ -77,7 +77,6 @@ class OrderUpdate(UpdateView):
         context = self.get_context_data()
         order_items = context['items']
         with transaction.atomic():
-            form.instance.created_by = self.request.user
             self.object = self.get_object()
             if order_items.is_valid():
                 order_items.instance = self.object
